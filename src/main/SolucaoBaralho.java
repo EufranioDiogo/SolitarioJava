@@ -26,14 +26,16 @@ public class SolucaoBaralho extends Pilha {
         }
     }
 
-    public void moveFromWaste(BaralhoSegundario source, Carta card) {
+    public boolean movimentarCartaDoBaralhoSecundarioParaSolucaoBaralho(BaralhoSegundario source, Carta card) {
         if(accepts(card)) {
-            this.push(source.pop());
+            this.push(card);
             source = null;
+            return true;
         }
+        return false;
     }
 
-    public void moveTo(Tabuleiro destination, Carta card) {
+    public void movimentaCartaDeSolucaoBaralhoParaTabuleiroDestino(Tabuleiro destination, Carta card) {
         if(destination.accepts(card)) {
             destination.push(this.pop());
         }

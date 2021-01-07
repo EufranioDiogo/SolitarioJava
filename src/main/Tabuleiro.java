@@ -22,7 +22,7 @@ public class Tabuleiro extends Pilha {
         Carta cartaAux;
         
         for (int i = 0; i < initSize; ++i) {
-            cartaAux = DrawPanel.getBaralhoPrincipal().pop();
+            cartaAux = PainelDoJogo.getBaralhoPrincipal().pop();
             push(cartaAux);
         }
 
@@ -56,7 +56,7 @@ public class Tabuleiro extends Pilha {
         }
     }
 
-    public void moveFromWaste(BaralhoSegundario source, Carta carta) {
+    public void movimentaCartaDeBaralhoSecundarioParaTabuleiroDestino(BaralhoSegundario source, Carta carta) {
         if (this.accepts(carta)) {
             this.push(source.pop());
         }
@@ -71,7 +71,7 @@ public class Tabuleiro extends Pilha {
         return carta.getValue() == 13;
     }
 
-    public boolean moveTo(SolucaoBaralho destination, Carta carta) {
+    public boolean movimentarCartaDoTabuleiroParaSolucaoBaralho(SolucaoBaralho destination, Carta carta) {
         if (destination.accepts(carta)) {
             destination.push(this.pop());
             if (!this.isEmpty()) {
@@ -83,7 +83,7 @@ public class Tabuleiro extends Pilha {
         return false;
     }
 
-    public void moveTo(Tabuleiro destination, Carta carta, int indexCartaSelecionada) {
+    public void movimentaCartaDeTabuleiroOrigemParaTabuleiroDestino(Tabuleiro destination, Carta carta, int indexCartaSelecionada) {
         if (!this.isEmpty() || carta.getValue() == 13) {
             if (destination.accepts(carta)) {
                 Pilha pilhaAux = new Pilha();
@@ -107,7 +107,7 @@ public class Tabuleiro extends Pilha {
         }
     }
     
-    public int getClickedCard(int y) {
+    public int getCartaClicada(int y) {
         int i = 0;
         
         List<Integer> limitesSuperiores = new ArrayList<>();
@@ -128,13 +128,14 @@ public class Tabuleiro extends Pilha {
                 index = i;
                 break;
             }
-            i++;
+            i--; // i++, erro que retornava carta mau selecionada porque ao inves de decrementar o valor de i aumentava e esse
+            // não era o objectivo porque o i começa por marcar a ultima carta do baralho com o index tamanho - 1 e depois
+            // tinha de recurar para pegar a anterior e assim sucessivamente
         }
         
         if (index > tamanho()) {
             return -1;
         }
-        System.out.println("Index: " + index);
         return index;
         
     }

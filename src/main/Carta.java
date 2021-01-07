@@ -142,9 +142,9 @@ public class Carta
         return sb.toString();
     }
 
-    public ListaLigada_1 generateCarta(char type) 
+    public ListaLigada generateCarta(char type) 
     {
-        ListaLigada_1 cartas = new ListaLigada_1();
+        ListaLigada cartas = new ListaLigada();
         String codigo;
         Image imagem;
         boolean cor;

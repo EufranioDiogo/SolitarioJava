@@ -31,7 +31,7 @@ public class Pilha extends JPanel {
         this.topo++;
     }
   }
-  public void push(ListaLigada_1 listaDeCartas) {
+  public void push(ListaLigada listaDeCartas) {
     while(!listaDeCartas.isEmpty()){
         this.push(listaDeCartas.removerFim());
     }
@@ -43,7 +43,7 @@ public class Pilha extends JPanel {
   }
 
   // remover elemento na pilha
-  public Carta pop() {
+public Carta pop() {
    if (!this.isEmpty()) {
        Carta aux = this.pilha[this.topo - 1];
        this.topo--;

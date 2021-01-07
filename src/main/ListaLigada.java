@@ -1,12 +1,12 @@
 package main;
 
-public class ListaLigada_1 {
+public class ListaLigada {
     Carta primeiro;
     Carta ultimo;
     private int id;
     int quant;
     
-    public ListaLigada_1(){
+    public ListaLigada(){
         this.primeiro = null;
         this.ultimo = null;
     }
@@ -40,14 +40,14 @@ public class ListaLigada_1 {
         }
     }
     
-    public void inserirFim(ListaLigada_1 carta){
+    public void inserirFim(ListaLigada carta){
         for (int i = 0; i < carta.contList(); i++) {
             carta.busca(i).setListID(this.getId());
             this.inserirFim(carta.busca(i));
         }
     }
     
-    public void inserirTudo(ListaLigada_1 listaDeCartas) {
+    public void inserirTudo(ListaLigada listaDeCartas) {
         int quantCartas = listaDeCartas.contList();
         
         Carta auxCarta;
