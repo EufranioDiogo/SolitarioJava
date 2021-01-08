@@ -8,9 +8,9 @@ import javax.smartcardio.Card;
  * @Autor ed
  * Free Use - Livre_Uso
  */
-public class BaralhoSegundario extends Pilha{
+public class BaralhoSecundario extends Pilha{
     
-    public BaralhoSegundario(int x, int y) {
+    public BaralhoSecundario(int x, int y) {
         super(x, y);
         super.setSize(72, 96);
     }

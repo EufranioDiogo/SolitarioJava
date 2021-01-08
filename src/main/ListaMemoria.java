@@ -10,6 +10,7 @@ public class ListaMemoria {
     NoMemoria primeiro;
     NoMemoria ultimo;
     private int id;
+    private int limite = 5;
     int quant;
     
     public ListaMemoria(){
@@ -38,11 +39,17 @@ public class ListaMemoria {
             this.inserirInicio(memoria);
         }
         else{
-            this.ultimo.proximo = memoria;
-            memoria.anterior = this.ultimo;
-            this.ultimo = memoria;
+            if (this.quant < this.limite) {
+               this.ultimo.proximo = memoria;
+                memoria.anterior = this.ultimo;
+                this.ultimo = memoria;
             
-            this.quant += 1;
+                this.quant += 1; 
+            } else {
+                remoberInicio();
+                inserirFim(memoria);
+            }
+            
         }
     }
     
@@ -66,8 +73,8 @@ public class ListaMemoria {
         
         if (!this.isEmpty()) {
             this.ultimo = this.ultimo.anterior;
+            this.quant -= 1;
         }
-        this.quant -= 1;
         return aux;
     }
     

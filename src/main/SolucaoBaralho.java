@@ -1,5 +1,7 @@
 package main;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 
 /**
@@ -19,14 +21,17 @@ public class SolucaoBaralho extends Pilha {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        
         if(this.isEmpty()) {
-            g.drawImage(Carta.getFoundationBase(suit), 0, 0, this.getWidth(), this.getHeight(), this);
+            g2d.setColor(Color.WHITE);
+            g2d.fillRoundRect(0, 0, this.getWidth(), this.getHeight(), 10, 10);
         }else {
             g.drawImage(this.top().getCardImage(), 0, 0, this.getWidth(), this.getHeight(), this);
         }
     }
 
-    public boolean movimentarCartaDoBaralhoSecundarioParaSolucaoBaralho(BaralhoSegundario source, Carta card) {
+    public boolean movimentarCartaDoBaralhoSecundarioParaSolucaoBaralho(BaralhoSecundario source, Carta card) {
         if(accepts(card)) {
             this.push(card);
             source = null;

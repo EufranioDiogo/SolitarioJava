@@ -8,7 +8,7 @@ import javax.swing.event.MouseInputAdapter;
 public class OuvidorDoEventoDoMouse extends MouseInputAdapter {
 	
 	private final BaralhoPrincipal baralhoPrincipal = PainelDoJogo.getBaralhoPrincipal();
-	private BaralhoSegundario baralhoSecundario = null;
+	private BaralhoSecundario baralhoSecundario = null;
 	private Tabuleiro pilhaDoTabuleiroSelecionado = null;
 	private SolucaoBaralho solucaoBaralhoSelecionada = null;
 	private Carta cartaSelecionado = null;
@@ -31,7 +31,7 @@ public class OuvidorDoEventoDoMouse extends MouseInputAdapter {
                  indexDaCartaClicada = pilhaDoTabuleiroSelecionado.getCartaClicada(evento.getY());
 
                  if (indexDaCartaClicada > -1) {
-                     cartaSelecionado = pilhaDoTabuleiroSelecionado.pilha[indexDaCartaClicada];
+                     cartaSelecionado = pilhaDoTabuleiroSelecionado.busca(indexDaCartaClicada);
 
 
                      for(SolucaoBaralho solucaoBaralho : PainelDoJogo.getSolucaoBaralho()) {
@@ -44,13 +44,13 @@ public class OuvidorDoEventoDoMouse extends MouseInputAdapter {
              }else if(elementoPressionado instanceof BaralhoPrincipal) { // Movimento de retirada das cartas do baralho principal
                  pilhaDoTabuleiroSelecionado = null;
                  if(!baralhoPrincipal.isEmpty()) {
-                     baralhoSecundario = PainelDoJogo.getBaralhoSegundario();
+                     baralhoSecundario = PainelDoJogo.getBaralhoSecundario();
                      baralhoSecundario.push(baralhoPrincipal.pop());
                      baralhoSecundario.top().showFace();
                      baralhoSecundario.top().setCartaVirada(false);
                      baralhoSecundario.repaint();
                  } else {
-                     baralhoSecundario = PainelDoJogo.getBaralhoSegundario();
+                     baralhoSecundario = PainelDoJogo.getBaralhoSecundario();
                      Carta cartaAuxiliar;
 
                      if (baralhoSecundario.tamanho() > 0) {
@@ -62,9 +62,9 @@ public class OuvidorDoEventoDoMouse extends MouseInputAdapter {
                      }
                      baralhoSecundario.repaint();
                  }
-             }else if(elementoPressionado instanceof BaralhoSegundario) {
+             }else if(elementoPressionado instanceof BaralhoSecundario) {
                  pilhaDoTabuleiroSelecionado = null;
-                 baralhoSecundario = PainelDoJogo.getBaralhoSegundario();
+                 baralhoSecundario = PainelDoJogo.getBaralhoSecundario();
                  cartaSelecionado = baralhoSecundario.top();
 
                  // Conversar com o grupo

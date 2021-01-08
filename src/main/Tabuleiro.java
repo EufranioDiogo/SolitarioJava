@@ -48,15 +48,15 @@ public class Tabuleiro extends Pilha {
         if (!this.isEmpty()) {
             for (int i = 0; i < tamanho(); i++) {
                 if (i + 1 == tamanho()) {
-                    this.pilha[i].setCartaVirada(false);
+                    this.busca(i).setCartaVirada(false);
                 }
-                g2d.drawImage(this.pilha[i].getImage(), 0, cardYPos, 72, 96, this);
+                g2d.drawImage(this.busca(i).getImage(), 0, cardYPos, 72, 96, this);
                 cardYPos += 20;
             }
         }
     }
 
-    public void movimentaCartaDeBaralhoSecundarioParaTabuleiroDestino(BaralhoSegundario source, Carta carta) {
+    public void movimentaCartaDeBaralhoSecundarioParaTabuleiroDestino(BaralhoSecundario source, Carta carta) {
         if (this.accepts(carta)) {
             this.push(source.pop());
         }

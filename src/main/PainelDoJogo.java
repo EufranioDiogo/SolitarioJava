@@ -14,7 +14,7 @@ public class PainelDoJogo extends JPanel
     public static Point POSICAO_INICIAL_TABULEIRO = new Point(20, 150);
     private static final int DESLOCAMENTO_TABULEIRO = 90;
     private static BaralhoPrincipal baralhoPrincipal;
-    private static BaralhoSegundario baralhoSecundario;
+    private static BaralhoSecundario baralhoSecundario;
     private static SolucaoBaralho[] solucaoBaralho;
     private static Tabuleiro[] tabuleiro;
     
@@ -41,7 +41,7 @@ public class PainelDoJogo extends JPanel
      {
         baralhoPrincipal = new BaralhoPrincipal(POSICAO_BARALHO_PRINCIPAL.x, POSICAO_BARALHO_PRINCIPAL.y);
         add(baralhoPrincipal);
-        baralhoSecundario = new BaralhoSegundario(POSICAO_BARALHO_PRINCIPAL.x - deslocamentoEmX, POSICAO_BARALHO_PRINCIPAL.y);
+        baralhoSecundario = new BaralhoSecundario(POSICAO_BARALHO_PRINCIPAL.x - deslocamentoEmX, POSICAO_BARALHO_PRINCIPAL.y);
         add(baralhoSecundario);
         solucaoBaralho = new SolucaoBaralho[4];
 
@@ -61,7 +61,7 @@ public class PainelDoJogo extends JPanel
     public static SolucaoBaralho[] getSolucaoBaralho() {
         return solucaoBaralho;
     }
-    public static BaralhoSegundario getBaralhoSegundario() {
+    public static BaralhoSecundario getBaralhoSecundario() {
         return baralhoSecundario;
     }
     public static BaralhoPrincipal getBaralhoPrincipal() {

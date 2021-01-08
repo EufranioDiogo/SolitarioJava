@@ -16,8 +16,6 @@ public class Carta
     public Image im;
     String codigo;
     private boolean cor;
-    public int listID;
-    public int stackID;
     public int id;
     private static final int LARGURA_CARTA = 400; //125;
     private static final int ALTURA_CARTA = 200; //150;
@@ -216,22 +214,6 @@ public class Carta
         this.cartaAtras = cartaAtras;
     }
 
-    public int getListID() {
-        return listID;
-    }
-
-    public void setListID(int listID) {
-        this.listID = listID;
-    }
-
-    public int getStackID() {
-        return stackID;
-    }
-
-    public void setStackID(int stackID) {
-        this.stackID = stackID;
-    }
-
     public int getId() {
         return id;
     }
@@ -309,4 +291,8 @@ public class Carta
                         
         
     }*/
+
+    void setListID(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

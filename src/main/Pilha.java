@@ -58,4 +58,21 @@ public Carta pop() {
     }
     return this.pilha[this.topo - 1];
   }
+  
+  public Carta busca(int index) {
+      Pilha pilhaAux = new Pilha();
+      
+      int quantElementosARemover = this.tamanho() - index - 1;
+      
+      while(quantElementosARemover > 0) {
+          pilhaAux.push(this.pop());
+          quantElementosARemover--;
+      }
+      Carta cartaSelecionada = this.top();
+      
+      while(!pilhaAux.isEmpty()) {
+          this.push(pilhaAux.pop());
+      }
+      return cartaSelecionada;
+  }
 }
