@@ -1,6 +1,5 @@
 package main;
 import java.awt.Image;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Carta

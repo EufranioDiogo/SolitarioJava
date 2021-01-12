@@ -61,6 +61,9 @@ public class PainelDoJogo extends JPanel
     public static SolucaoBaralho[] getSolucaoBaralho() {
         return solucaoBaralho;
     }
+    public static Tabuleiro[] getTabuleiros() {
+        return tabuleiro;
+    }
     public static BaralhoSecundario getBaralhoSecundario() {
         return baralhoSecundario;
     }

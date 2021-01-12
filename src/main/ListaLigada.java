@@ -150,7 +150,7 @@ public class ListaLigada {
         int i = 0;
         if(!this.isEmpty())
         {
-            if( pos>=0 && pos<this.contList())
+            if( pos >= 0 && pos < this.contList())
             {
                 Carta cartaAux = this.primeiro;
                 

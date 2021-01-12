@@ -2,6 +2,7 @@ package main;
 
 import java.awt.Component;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 
 import javax.swing.event.MouseInputAdapter;
 
@@ -13,7 +14,6 @@ public class OuvidorDoEventoDoMouse extends MouseInputAdapter {
 	private SolucaoBaralho solucaoBaralhoSelecionada = null;
 	private Carta cartaSelecionado = null;
         private int indexDaCartaClicada;
-
         // Está precionando o mouse
 	@Override
 	public void mousePressed(MouseEvent evento) {
@@ -32,7 +32,6 @@ public class OuvidorDoEventoDoMouse extends MouseInputAdapter {
 
                  if (indexDaCartaClicada > -1) {
                      cartaSelecionado = pilhaDoTabuleiroSelecionado.busca(indexDaCartaClicada);
-
 
                      for(SolucaoBaralho solucaoBaralho : PainelDoJogo.getSolucaoBaralho()) {
                          if(pilhaDoTabuleiroSelecionado.movimentarCartaDoTabuleiroParaSolucaoBaralho(solucaoBaralho, cartaSelecionado)) {
@@ -78,6 +77,19 @@ public class OuvidorDoEventoDoMouse extends MouseInputAdapter {
                      }
                  }
              }
+            
+            if (PainelDoJogo.getBaralhoPrincipal().isEmpty() && PainelDoJogo.getBaralhoSecundario().isEmpty()) {
+                boolean venceu = true;
+                
+                for (Tabuleiro tabuleiro : PainelDoJogo.getTabuleiros()) {
+                    if(!tabuleiro.isEmpty()) {
+                        venceu = false;
+                    }
+                }
+                if (venceu) {
+                    JOptionPane.showMessageDialog(null, "Venceu");
+                }
+            }
              evento.getComponent().repaint();
 	}
 
@@ -107,6 +119,7 @@ public class OuvidorDoEventoDoMouse extends MouseInputAdapter {
                         SolucaoBaralho solucaoBaralhoOrigem = solucaoBaralhoSelecionada;
                         Tabuleiro tabuleiroDestino = (Tabuleiro) elementoSelecionado;
                         solucaoBaralhoOrigem.movimentaCartaDeSolucaoBaralhoParaTabuleiroDestino(tabuleiroDestino, cartaSelecionado);
+                        
                         solucaoBaralhoOrigem.repaint();
                         tabuleiroDestino.repaint();
                     }
@@ -119,7 +132,5 @@ public class OuvidorDoEventoDoMouse extends MouseInputAdapter {
             pilhaDoTabuleiroSelecionado = null;
             baralhoSecundario = null;
 	}
-	
-	
 
 }

@@ -62,27 +62,7 @@ public class Tabuleiro extends Pilha {
         }
         source = null;
     }
-
-    public boolean accepts(Carta carta) {
-        if (!this.isEmpty()) {
-            return this.top().getValue() > carta.getValue()
-            && !this.top().isCor() == carta.isCor();
-        }
-        return carta.getValue() == 13;
-    }
-
-    public boolean movimentarCartaDoTabuleiroParaSolucaoBaralho(SolucaoBaralho destination, Carta carta) {
-        if (destination.accepts(carta)) {
-            destination.push(this.pop());
-            if (!this.isEmpty()) {
-                this.top().setCartaVirada(false);
-                this.top().showFace();
-            }
-            return true;
-        }
-        return false;
-    }
-
+    
     public void movimentaCartaDeTabuleiroOrigemParaTabuleiroDestino(Tabuleiro destination, Carta carta, int indexCartaSelecionada) {
         if (!this.isEmpty() || carta.getValue() == 13) {
             if (destination.accepts(carta)) {
@@ -105,6 +85,26 @@ public class Tabuleiro extends Pilha {
             this.top().setCartaVirada(false);
             this.top().showFace();
         }
+    }
+
+    public boolean accepts(Carta carta) {
+        if (!this.isEmpty()) {
+            return this.top().getValue() == carta.getValue() + 1
+            && !this.top().isCor() == carta.isCor();
+        }
+        return carta.getValue() == 13;
+    }
+
+    public boolean movimentarCartaDoTabuleiroParaSolucaoBaralho(SolucaoBaralho destination, Carta carta) {
+        if (destination.accepts(carta)) {
+            destination.push(this.pop());
+            if (!this.isEmpty()) {
+                this.top().setCartaVirada(false);
+                this.top().showFace();
+            }
+            return true;
+        }
+        return false;
     }
     
     public int getCartaClicada(int y) {

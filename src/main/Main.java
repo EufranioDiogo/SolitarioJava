@@ -13,7 +13,7 @@ public class Main extends JFrame
 {
         static protected PainelDoJogo gamePanel;
         
-	public static final int PANEL_WIDTH = 640, PANEL_HEIGHT = 500;
+	public static final int PANEL_WIDTH = 700, PANEL_HEIGHT = 700;
 	
 	public Main() 
         {
